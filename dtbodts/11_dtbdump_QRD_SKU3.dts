@@ -1,0 +1,201 @@
+/dts-v1/;
+
+/ {
+	model = "QRD SKU3";
+	qcom,board-id = <0xb 0x0>;
+
+	__fixups__ {
+		blsp1_uart0 = "/fragment@1:target:0";
+		clock_gcc = "/fragment@3/__overlay__/nq@28:clocks:0";
+		gpio_key_active = "/fragment@0/__overlay__/gpio_keys:pinctrl-0:0";
+		i2c_5 = "/fragment@3:target:0";
+		intc = "/fragment@5/__overlay__:interrupt-map:4", "/fragment@5/__overlay__:interrupt-map:24";
+		nfc_disable_active = "/fragment@3/__overlay__/nq@28:pinctrl-0:4";
+		nfc_disable_suspend = "/fragment@3/__overlay__/nq@28:pinctrl-1:4";
+		nfc_int_active = "/fragment@3/__overlay__/nq@28:pinctrl-0:0";
+		nfc_int_suspend = "/fragment@3/__overlay__/nq@28:pinctrl-1:0";
+		pm8953_gpios = "/fragment@2:target:0", "/fragment@3/__overlay__/nq@28:qcom,nq-clkreq:0";
+		pm8953_l11 = "/fragment@5/__overlay__:vdd-supply:0";
+		pm8953_l12 = "/fragment@5/__overlay__:vdd-io-supply:0";
+		pm8953_l5 = "/fragment@4/__overlay__:vdd-io-supply:0";
+		pm8953_l8 = "/fragment@4/__overlay__:vdd-supply:0";
+		sdc1_clk_off = "/fragment@4/__overlay__:pinctrl-1:0";
+		sdc1_clk_on = "/fragment@4/__overlay__:pinctrl-0:0";
+		sdc1_cmd_off = "/fragment@4/__overlay__:pinctrl-1:4";
+		sdc1_cmd_on = "/fragment@4/__overlay__:pinctrl-0:4";
+		sdc1_data_off = "/fragment@4/__overlay__:pinctrl-1:8";
+		sdc1_data_on = "/fragment@4/__overlay__:pinctrl-0:8";
+		sdc1_rclk_off = "/fragment@4/__overlay__:pinctrl-1:12";
+		sdc1_rclk_on = "/fragment@4/__overlay__:pinctrl-0:12";
+		sdc2_cd_on = "/fragment@5/__overlay__:pinctrl-0:12";
+		sdc2_clk_off = "/fragment@5/__overlay__:pinctrl-1:0";
+		sdc2_clk_on = "/fragment@5/__overlay__:pinctrl-0:0";
+		sdc2_cmd_off = "/fragment@5/__overlay__:pinctrl-1:4";
+		sdc2_cmd_on = "/fragment@5/__overlay__:pinctrl-0:4";
+		sdc2_data_off = "/fragment@5/__overlay__:pinctrl-1:8";
+		sdc2_data_on = "/fragment@5/__overlay__:pinctrl-0:8";
+		sdhc_1 = "/fragment@4:target:0";
+		sdhc_2 = "/fragment@5:target:0", "/fragment@5/__overlay__:interrupt-parent:0";
+		soc = "/fragment@0:target:0";
+		tlmm = "/fragment@0/__overlay__/gpio_keys/vol_up:gpios:0", "/fragment@3/__overlay__/nq@28:qcom,nq-irq:0", "/fragment@3/__overlay__/nq@28:qcom,nq-ven:0", "/fragment@3/__overlay__/nq@28:qcom,nq-firm:0", "/fragment@3/__overlay__/nq@28:qcom,nq-esepwr:0", "/fragment@3/__overlay__/nq@28:interrupt-parent:0", "/fragment@5/__overlay__:interrupt-map:44", "/fragment@5/__overlay__:cd-gpios:0";
+		uart_console_active = "/fragment@1/__overlay__:pinctrl-0:0";
+	};
+
+	__local_fixups__ {
+
+		fragment@3 {
+
+			__overlay__ {
+
+				nq@28 {
+					pinctrl-0 = <0x8>;
+				};
+			};
+		};
+	};
+
+	__symbols__ {
+		nfc_clk_default = "/fragment@2/__overlay__/nfc_clk/nfc_clk_default";
+		vdd_vreg = "/fragment@0/__overlay__/vdd_vreg";
+	};
+
+	fragment@0 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+
+			gpio_keys {
+				compatible = "gpio-keys";
+				label = "gpio-keys";
+				pinctrl-0 = <0xffffffff>;
+				pinctrl-names = "default";
+
+				vol_up {
+					debounce-interval = <0xf>;
+					gpio-key,wakeup;
+					gpios = <0xffffffff 0x55 0x1>;
+					label = "volume_up";
+					linux,can-disable;
+					linux,code = <0x73>;
+					linux,input-type = <0x1>;
+				};
+			};
+
+			i2c@78b7000 {
+			};
+
+			vdd_vreg {
+				compatible = "regulator-fixed";
+				phandle = <0x2>;
+				regulator-name = "vdd_vreg";
+				status = "ok";
+			};
+		};
+	};
+
+	fragment@1 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			pinctrl-0 = <0xffffffff>;
+			pinctrl-names = "default";
+			status = "ok";
+		};
+	};
+
+	fragment@2 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+
+			nfc_clk {
+
+				nfc_clk_default {
+					function = "normal";
+					input-enable;
+					phandle = <0x1>;
+					pins = "gpio2";
+					power-source = <0x1>;
+				};
+			};
+		};
+	};
+
+	fragment@3 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			#address-cells = <0x1>;
+			#size-cells = <0x0>;
+			status = "ok";
+
+			nq@28 {
+				clock-names = "ref_clk";
+				clocks = <0xffffffff 0x498938e5>;
+				compatible = "qcom,nq-nci";
+				interrupt-names = "nfc_irq";
+				interrupt-parent = <0xffffffff>;
+				interrupts = <0x11 0x0>;
+				pinctrl-0 = <0xffffffff 0xffffffff 0x1>;
+				pinctrl-1 = <0xffffffff 0xffffffff>;
+				pinctrl-names = "nfc_active", "nfc_suspend";
+				qcom,clk-src = "BBCLK2";
+				qcom,nq-clkreq = <0xffffffff 0x2 0x0>;
+				qcom,nq-esepwr = <0xffffffff 0x8d 0x0>;
+				qcom,nq-firm = <0xffffffff 0x3e 0x0>;
+				qcom,nq-irq = <0xffffffff 0x11 0x0>;
+				qcom,nq-ven = <0xffffffff 0x10 0x0>;
+				reg = <0x28>;
+			};
+		};
+	};
+
+	fragment@4 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			pinctrl-0 = <0xffffffff 0xffffffff 0xffffffff 0xffffffff>;
+			pinctrl-1 = <0xffffffff 0xffffffff 0xffffffff 0xffffffff>;
+			pinctrl-names = "active", "sleep";
+			qcom,bus-speed-mode = "HS400_1p8v", "HS200_1p8v", "DDR_1p8v";
+			qcom,clk-rates = <0x61a80 0x1312d00 0x17d7840 0x2faf080 0x5f5e100 0xb71b000 0x16e36000>;
+			qcom,nonremovable;
+			qcom,vdd-current-level = <0xc8 0x8b290>;
+			qcom,vdd-io-always-on;
+			qcom,vdd-io-current-level = <0xc8 0x4f588>;
+			qcom,vdd-io-lpm-sup;
+			qcom,vdd-io-voltage-level = <0x1b7740 0x1b7740>;
+			qcom,vdd-voltage-level = <0x2c4020 0x2c4020>;
+			status = "ok";
+			vdd-io-supply = <0xffffffff>;
+			vdd-supply = <0xffffffff>;
+		};
+	};
+
+	fragment@5 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			#address-cells = <0x0>;
+			#interrupt-cells = <0x1>;
+			cd-gpios = <0xffffffff 0x85 0x1>;
+			interrupt-map = <0x0 0xffffffff 0x0 0x7d 0x0 0x1 0xffffffff 0x0 0xdd 0x0 0x2 0xffffffff 0x85 0x0>;
+			interrupt-map-mask = <0xffffffff>;
+			interrupt-names = "hc_irq", "pwr_irq", "status_irq";
+			interrupt-parent = <0xffffffff>;
+			interrupts = <0x0 0x1 0x2>;
+			pinctrl-0 = <0xffffffff 0xffffffff 0xffffffff 0xffffffff>;
+			pinctrl-1 = <0xffffffff 0xffffffff 0xffffffff>;
+			pinctrl-names = "active", "sleep";
+			qcom,bus-speed-mode = "SDR12", "SDR25", "SDR50", "DDR50", "SDR104";
+			qcom,clk-rates = <0x61a80 0x1312d00 0x17d7840 0x2faf080 0x5f5e100 0xbebc200>;
+			qcom,vdd-current-level = <0x3a98 0xc3500>;
+			qcom,vdd-io-current-level = <0xc8 0x55f0>;
+			qcom,vdd-io-voltage-level = <0x1b7740 0x2d0370>;
+			qcom,vdd-voltage-level = <0x2d0370 0x2d0370>;
+			status = "ok";
+			vdd-io-supply = <0xffffffff>;
+			vdd-supply = <0xffffffff>;
+		};
+	};
+};

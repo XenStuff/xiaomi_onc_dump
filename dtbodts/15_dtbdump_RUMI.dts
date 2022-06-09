@@ -1,0 +1,122 @@
+/dts-v1/;
+
+/ {
+	compatible = "qcom,rumi";
+	model = "RUMI";
+	qcom,board-id = <0xf 0x0>;
+	qcom,pmic-id = <0x0 0x0 0x0 0x0>;
+
+	__fixups__ {
+		adsp_fw_mem = "/fragment@3:target:0";
+		adsp_mem = "/fragment@8:target:0";
+		blsp1_serial1 = "/fragment@0:target:0";
+		cont_splash_mem = "/fragment@10:target:0";
+		dfps_data_mem = "/fragment@9:target:0";
+		gpu_mem = "/fragment@11:target:0";
+		modem_mem = "/fragment@2:target:0";
+		qseecom_mem = "/fragment@7:target:0";
+		secure_mem = "/fragment@6:target:0";
+		uart1_console_active = "/fragment@0/__overlay__:pinctrl-0:0";
+		venus_mem = "/fragment@5:target:0";
+		wcnss_fw_mem = "/fragment@4:target:0";
+		wdog = "/fragment@1:target:0";
+	};
+
+	fragment@0 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			pinctrl-0 = <0xffffffff>;
+			pinctrl-names = "default";
+			status = "ok";
+		};
+	};
+
+	fragment@1 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@10 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@11 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@2 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@3 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@4 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@5 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@6 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@7 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@8 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@9 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+};
